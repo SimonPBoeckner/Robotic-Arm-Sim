@@ -7,6 +7,6 @@ class Config:
     length_2: float = 1
 
     base_coordinate: Dict[float, float] = field(default_factory=lambda: {
-        "x": 1,
-        "y": 1
+        "x": 0,
+        "y": 0
     })
