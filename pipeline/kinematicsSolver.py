@@ -11,7 +11,7 @@ class InverseKinematicsSolver():
         else:
             self.config = config
 
-    def solve(self, goal: EndEffectorPosition) -> Dict[str, PolarCoordinate]:
+    def solve(self, goal: EndEffectorPosition) -> Dict[PolarCoordinate]:
         r = self.r(goal.x, goal.y)
 
         if r > self.config.length_1 + self.config.length_2:
@@ -20,7 +20,7 @@ class InverseKinematicsSolver():
             return None
 
         cos_t2 = (goal.x**2 + goal.y**2 - self.config.length_1**2 - self.config.length_2**2) / (2 * self.config.length_1 * self.config.length_2)
-        cos_t2 = max(-1.0, min(1.0, cos_t2))
+        # cos_t2 = max(-1.0, min(1.0, cos_t2))
         t2_base = math.acos(cos_t2)
 
         sign = -1 if goal.x >= 0 else 1
@@ -30,6 +30,7 @@ class InverseKinematicsSolver():
             self.config.length_1 + self.config.length_2 * math.cos(t2)
         )
         t1 = math.atan2(goal.y, goal.x) - beta
+        print(f"")
 
         return {
             "joint_1": PolarCoordinate(t1, self.config.length_1),
