@@ -11,7 +11,7 @@ class InverseKinematicsSolver():
         else:
             self.config = config
 
-    def solve(self, goal: EndEffectorPosition) -> Dict[PolarCoordinate]:
+    def solve(self, goal: EndEffectorPosition) -> Dict[str, PolarCoordinate]:
         r = self.r(goal.x, goal.y)
 
         if r > self.config.length_1 + self.config.length_2:

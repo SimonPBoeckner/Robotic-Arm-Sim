@@ -58,7 +58,7 @@ class Grapher():
         self.ax.set_xlim(-self.lim, self.lim)
         self.ax.set_ylim(0, self.lim)
 
-    def update(self, points: Dict[PolarCoordinate]) -> None:
+    def update(self, points: Dict[str, PolarCoordinate]) -> None:
         self.coords_1[0] = points["joint_1"].theta
         self.coords_2[0] = points["joint_2"].theta
         self.point_1[0] = math.cos(points["joint_1"].theta) * points["joint_1"].length

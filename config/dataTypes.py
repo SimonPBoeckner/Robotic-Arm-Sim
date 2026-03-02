@@ -8,8 +8,8 @@ class EndEffectorPosition:
 
 @dataclass
 class JointPositions:
-    joint_1: Dict[float]
-    joint_2: Dict[float]
+    joint_1: Dict[str, float]
+    joint_2: Dict[str, float]
 
 @dataclass
 class PolarCoordinate:

@@ -12,7 +12,7 @@ class Converter():
         else:
             self.config = config
 
-    def polarToCartesian(self, coordinates: Dict[PolarCoordinate]) -> JointPositions:
+    def polarToCartesian(self, coordinates: Dict[str, PolarCoordinate]) -> JointPositions:
         joint_1 = {
             "x": coordinates["joint_1"].length * math.cos(coordinates["joint_1"].theta),
             "y": coordinates["joint_1"].length * math.sin(coordinates["joint_1"].theta)
@@ -23,7 +23,7 @@ class Converter():
         }
         return JointPositions(joint_1, joint_2)
     
-    def polarToList(self, theta_1: float, theta_2: float, coordinates: Dict[PolarCoordinate]) -> List[List]:
+    def polarToList(self, theta_1: float, theta_2: float, coordinates: Dict[str, PolarCoordinate]) -> List:
         segment_1 = np.linspace(theta_1, coordinates["joint_1"].theta, 100)
         print(segment_1)
         segment_2 = np.linspace(theta_2, coordinates["joint_2"].theta, 100)
